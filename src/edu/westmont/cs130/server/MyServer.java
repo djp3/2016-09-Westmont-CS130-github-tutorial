@@ -9,7 +9,7 @@ public class MyServer {
 	public static void main(String[] args) {
 		
 		System.out.println("Starting the server");
-
+		System.out.println("Caleb was here");
 		System.out.println("Quitting the server");
 	}
 
