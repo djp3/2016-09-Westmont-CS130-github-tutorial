@@ -10,6 +10,8 @@ public class MyServer {
 		
 		System.out.println("Starting the server");
 
+		System.out.println("Prof. Patterson made a change");
+		
 		System.out.println("Quitting the server");
 	}
 
