@@ -1,6 +1,10 @@
 package edu.westmont.cs130.server;
 
-public class myServer {
+public class MyServer {
+	
+	static Integer myServerTest(){
+		return 1;
+	}
 
 	public static void main(String[] args) {
 		
