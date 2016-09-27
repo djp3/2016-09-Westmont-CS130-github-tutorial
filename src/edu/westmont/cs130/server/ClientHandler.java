@@ -30,6 +30,14 @@ public class ClientHandler implements Runnable{
 	 * @param message
 	 */
 	public void sendMessage(String sender,String message){
+		if(this.out != null){
+			System.out.println("Server sending:"+sender+":"+message);
+			this.out.println(sender+" says \""+message+"\"");
+			this.out.flush();
+		}
+		else{
+			System.out.println("Couldn't output the message because connection was null");
+		}
 	}
 
 	@Override
