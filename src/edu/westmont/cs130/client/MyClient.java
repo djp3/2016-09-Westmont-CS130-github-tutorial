@@ -39,7 +39,6 @@ public class MyClient {
 			//Execute our protocol which is to join by sending our name
 			out.println(name);
 			out.flush();
-			/*
 					
 			//Set up one thread to listen for messages from the user to send to server
 			UserInputManager ms = new UserInputManager(out);
@@ -57,7 +56,7 @@ public class MyClient {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
 				}
-			}*/
+			}
 					
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
