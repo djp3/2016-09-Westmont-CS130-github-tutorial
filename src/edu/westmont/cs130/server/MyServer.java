@@ -25,7 +25,7 @@ public class MyServer {
 		try(ServerSocket server = new ServerSocket(port)){
 			//Create a list of clients that are connected
 			//ArrayList<ClientHandler> clientList = new ArrayList<ClientHandler>();
-			//while (true) {
+			while (true) {
 				//Wait for clients to connect
 				Socket s = server.accept();
 				System.out.println("Client connected...");
@@ -37,11 +37,9 @@ public class MyServer {
 				Thread t = new Thread(service);
 				t.start();
 			}
-		}/* catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Something went wrong with the socket");
-		}*/
-	}
-
+			}
 	}
 }
