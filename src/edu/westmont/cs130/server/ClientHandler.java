@@ -8,10 +8,19 @@ import java.util.Scanner;
 
 public class ClientHandler implements Runnable{
 
-	private Socket socket;
+	private Socket socket = null;;
+	private Scanner in = null;
+	private PrintWriter out = null;
+	private List<ClientHandler> others;
+	
+	private String name;
 
-	public ClientHandler(Socket s){
+	public ClientHandler(Socket s,List<ClientHandler> others) throws IOException {
 		this.socket = s;
+		this.others = others;
+		
+		this.in = new Scanner(socket.getInputStream());
+		this.out = new PrintWriter(socket.getOutputStream());
 	}
 	
 	/**
@@ -25,7 +34,40 @@ public class ClientHandler implements Runnable{
 
 	@Override
 	public void run() {
-		System.out.println("I was run! "+System.currentTimeMillis());
+		try{
+			//According to our protocol the first message from client
+			//is the client's name, so grab it
+			if(this.in.hasNextLine()){
+				this.name = this.in.nextLine();
+				System.out.println(this.name+" joined the conversation");
+			}
+			
+			//The next messages are chat messages until QUIT
+			while(this.in.hasNextLine()){
+				String message = this.in.nextLine();
+				if(message.equals("QUIT")){
+					System.out.println(this.name+" left the conversation");
+					return;
+				}
+				else{
+					//When we get a message, go through the list of all the
+					// connected clients and send the message
+					for(ClientHandler c:this.others){
+						if(this != c){
+							c.sendMessage(this.name,message);
+						}
+					}
+				}
+			}
+		}
+		finally{
+			if(this.socket != null){
+				try {
+					this.socket.close();
+				} catch (IOException e) {
+				}
+			}
+		}
 	}
 
 }
