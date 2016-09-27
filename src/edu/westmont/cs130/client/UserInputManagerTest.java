@@ -10,13 +10,6 @@ public class UserInputManagerTest {
 
 	@Test
 	public void testUserInputManager() {
-		try{
-			PrintWriter printWriter = new PrintWriter(System.out);
-			new UserInputManager(printWriter);
-		}
-		catch(RuntimeException e){
-			fail("Got an unexpected exception");
-		}
 	}
 
 }
