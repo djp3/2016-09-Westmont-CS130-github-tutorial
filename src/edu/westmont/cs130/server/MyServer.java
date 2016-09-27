@@ -1,6 +1,8 @@
 package edu.westmont.cs130.server;
 
+import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class MyServer {
 
@@ -25,20 +27,20 @@ public class MyServer {
 			//ArrayList<ClientHandler> clientList = new ArrayList<ClientHandler>();
 			//while (true) {
 				//Wait for clients to connect
-			//	Socket s = server.accept();
-			//	System.out.println("Client connected...");
+				Socket s = server.accept();
+				System.out.println("Client connected...");
 				
 				//Set up a thread to manage the client
-			//	ClientHandler service = new ClientHandler(s,clientList);
+				ClientHandler service = new ClientHandler(s);
 				//Add the client to the list
-			//	clientList.add(service);
-			//	Thread t = new Thread(service);
-			//	t.start();
+				//clientList.add(service);
+				Thread t = new Thread(service);
+				t.start();
 			}
-		} catch (IOException e) {
+		}/* catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("Something went wrong with the socket");
-		}
+		}*/
 	}
 
 	}

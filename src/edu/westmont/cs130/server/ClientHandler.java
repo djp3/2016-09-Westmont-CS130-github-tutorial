@@ -8,7 +8,10 @@ import java.util.Scanner;
 
 public class ClientHandler implements Runnable{
 
-	public ClientHandler(Socket s,List<ClientHandler> others) throws IOException {
+	private Socket socket;
+
+	public ClientHandler(Socket s){
+		this.socket = s;
 	}
 	
 	/**
@@ -22,6 +25,7 @@ public class ClientHandler implements Runnable{
 
 	@Override
 	public void run() {
+		System.out.println("I was run! "+System.currentTimeMillis());
 	}
 
 }
