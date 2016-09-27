@@ -19,6 +19,7 @@ public class ServerInputManager implements Runnable{
 			String incomingMessage = in.nextLine();
 			//Exit if this user has sent QUIT and the server responds with appropriate
 			// message in response
+			//This could be done better
 			if(incomingMessage.equals(this.name+" left the conversation")){
 				return;
 			}
